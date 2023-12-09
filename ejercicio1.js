@@ -19,7 +19,8 @@ const infoAceitesEsenciales = {
         note: "alta"
     },
     'Eucalipto': {
-        scientistName:['Eucaliptus Globulus', 'Analgésico'],
+        scientistName:'Eucaliptus Globulus', 
+        property:['Expectorante', 'Analgésico'],
         note: 'alta'
     },
     'Romero': {
@@ -29,19 +30,20 @@ const infoAceitesEsenciales = {
     }
 }
 
-//función: mostrar información del aceite esencia
+//función: mostrar información del aceite esencia, de  forma individual
 
-function mostrarInfoAceiteEsencial(esencia){
-//comprobar si la esencia está dentro de la información c on el if
+function mostrarInfoAceiteEsencial(esencia){ //la variable es la esencia y es algo que yo pongo aquí, no viene en el array de objetos
+
 console.log(`##### ${esencia} ######`)
 
+//comprobar si la esencia está dentro de la información con el if
 if(esencia in infoAceitesEsenciales){
-    //se hace una constante para sacar la información
-
+    //se hace una constante para sacar la información de esa variable
     const informacion = infoAceitesEsenciales[esencia];
+    console.log(informacion)
     //Mostrar la información
     console.log(`Nombre científico: ${informacion.scientistName}`)
-    console.log(`Propiedades: ${informacion.property.join(', ')}`)
+    console.log(`Propiedades: ${informacion.property}`)
     console.log(`Nota: ${informacion.note}`)
 
 }else {
@@ -49,15 +51,15 @@ if(esencia in infoAceitesEsenciales){
 }
 
 }
-mostrarInfoAceiteEsencial('Lavanda');
+mostrarInfoAceiteEsencial('Romero');
 
 //Añadir la capacidad de buscar información de varios aceites esenciales a la vez
 
-const mostrarInfoAceiteEsencial = (esencias) =>{
-    //recirre tidis los nombres
-    esencias.forEach(esencia => {
-        mostrarInfoAceiteEsencial(esencia)
-    })
+const mostrarInfoVariosAE = (esencias) => {
+    //recorrer todos los nombres
+    esencias.forEach(identificador =>{
+        mostrarInfoAceiteEsencial(identificador);
+    });
 }
 
-mostrarInfoAceiteEsencial(['Lavanda', 'Romero', 'Eucalipto', 'Rosas'])
+mostrarInfoVariosAE(['Lavanda', 'Romero', 'Eucalipto', 'Rosas'])
